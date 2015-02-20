@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/tool_bar_size"
+        android:background="@color/blue" >
+
+        <ImageView
+            android:layout_width="@dimen/tool_bar_size"
+            android:layout_height="@dimen/tool_bar_size"
+            android:id="@+id/btnBack"
+            android:layout_alignParentRight="false"
+            android:background="@drawable/toolbar_background"
+            android:padding="12dp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Налаштування"
+            android:id="@+id/textView2"
+            android:layout_toRightOf="@+id/btnBack"
+            android:layout_centerVertical="true"
+            android:textSize="21dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:id="@+id/titlesContainer"></FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:id="@+id/datailContainer"></FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

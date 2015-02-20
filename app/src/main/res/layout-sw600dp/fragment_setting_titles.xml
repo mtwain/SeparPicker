@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Основні"
+        android:id="@+id/itemMain"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/text_item_color"
+        android:background="@drawable/text_item_background_selected" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Безпека"
+        android:id="@+id/itemSecurity"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/text_item_color"
+        android:background="@drawable/text_item_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Додаткові"
+        android:id="@+id/itemOptional"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/text_item_color"
+        android:background="@drawable/text_item_background" />
+</LinearLayout>

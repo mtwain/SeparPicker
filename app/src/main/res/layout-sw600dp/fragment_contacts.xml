@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/tool_bar_size"
+            android:background="@color/blue" >
+
+            <ImageView
+                android:layout_width="@dimen/tool_bar_size"
+                android:layout_height="@dimen/tool_bar_size"
+                android:id="@+id/btnBack"
+                android:layout_alignParentRight="false"
+                android:background="@drawable/toolbar_background"
+                android:padding="12dp"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Контакти"
+                android:id="@+id/textView7"
+                android:layout_toRightOf="@+id/btnBack"
+                android:layout_centerVertical="true"
+                android:textSize="21dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:id="@+id/containerContacts" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:id="@+id/containerDetail"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/btnAdd"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/round_button"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="20dp" />
+</RelativeLayout>

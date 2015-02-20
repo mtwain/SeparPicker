@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/tool_bar_size"
+            android:background="@color/blue" >
+
+            <ImageView
+                android:layout_width="@dimen/tool_bar_size"
+                android:layout_height="@dimen/tool_bar_size"
+                android:id="@+id/btnBack"
+                android:layout_alignParentRight="false"
+                android:background="@drawable/toolbar_background"
+                android:padding="12dp"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Новий контакт"
+                android:id="@+id/textView17"
+                android:layout_toRightOf="@+id/btnBack"
+                android:layout_centerVertical="true"
+                android:textSize="21dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editCall"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentBottom="true"
+                android:hint="Введіть позивний" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Позивний"
+                android:id="@+id/textView14"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/text_item_color"
+                android:layout_above="@+id/editCall"
+                android:layout_marginBottom="4dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_gravity="center_horizontal" >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editEmail"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentBottom="true"
+                android:hint="Введіть email" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email адреса"
+                android:id="@+id/textView15"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/text_item_color"
+                android:layout_above="@+id/editEmail"
+                android:layout_marginBottom="4dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:layout_gravity="center_horizontal" >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editNumber"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentBottom="true"
+                android:hint="Введіть номер телефону" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Номер телефону"
+                android:id="@+id/textView16"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/text_item_color"
+                android:layout_above="@+id/editNumber"
+                android:layout_marginBottom="4dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Відміна"
+            android:id="@+id/btnCancel"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/toolbar_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Зберегти"
+            android:id="@+id/btnSave"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/toolbar_background" />
+    </LinearLayout>
+
+</RelativeLayout>

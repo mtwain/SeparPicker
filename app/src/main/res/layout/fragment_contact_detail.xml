@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:visibility="invisible"
+    android:id="@+id/root_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/text_item_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textCall"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/text_item_color" />
+
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:id="@+id/editCall"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Позивний"
+            android:id="@+id/textView9"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_above="@+id/textCall"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="4dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/text_item_background" >
+
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:id="@+id/editEmail"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textEmail"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/text_item_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email адреса"
+            android:id="@+id/textView11"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_above="@+id/textEmail"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="4dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/text_item_background" >
+
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:id="@+id/editNumber"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textNumber"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/text_item_color" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер телефону"
+            android:id="@+id/textView13"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_above="@+id/textNumber"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="4dp" />
+    </RelativeLayout>
+</LinearLayout>
