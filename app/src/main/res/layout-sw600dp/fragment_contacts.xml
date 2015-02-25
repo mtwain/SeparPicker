@@ -19,7 +19,7 @@
                 android:id="@+id/btnBack"
                 android:layout_alignParentRight="false"
                 android:background="@drawable/toolbar_background"
-                android:padding="12dp"
+                android:padding="18dp"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Контакти"
-                android:id="@+id/textView7"
+                android:id="@+id/barTitle"
                 android:layout_toRightOf="@+id/btnBack"
                 android:layout_centerVertical="true"
                 android:textSize="21dp" />

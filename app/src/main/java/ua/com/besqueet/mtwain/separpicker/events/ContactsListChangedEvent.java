@@ -6,10 +6,8 @@ import ua.com.besqueet.mtwain.separpicker.data.Contact;
 
 public class ContactsListChangedEvent {
 
-    public ArrayList<Contact> contacts;
+    public ContactsListChangedEvent(){
 
-    public ContactsListChangedEvent(ArrayList<Contact> contacts){
-        this.contacts = contacts;
     }
 
 }

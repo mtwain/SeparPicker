@@ -14,7 +14,7 @@
             android:id="@+id/btnBack"
             android:layout_alignParentRight="false"
             android:background="@drawable/toolbar_background"
-            android:padding="12dp"
+            android:padding="18dp"
             android:layout_alignParentLeft="true" />
 
         <TextView

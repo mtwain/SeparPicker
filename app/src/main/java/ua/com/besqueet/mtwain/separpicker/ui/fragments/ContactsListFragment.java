@@ -1,7 +1,9 @@
 package ua.com.besqueet.mtwain.separpicker.ui.fragments;
 
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +18,18 @@ import java.util.ArrayList;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import de.halfbit.tinybus.Subscribe;
+import ua.com.besqueet.mtwain.separpicker.Constants;
 import ua.com.besqueet.mtwain.separpicker.R;
 import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
+import ua.com.besqueet.mtwain.separpicker.controllers.UtilsController;
 import ua.com.besqueet.mtwain.separpicker.data.Contact;
+import ua.com.besqueet.mtwain.separpicker.events.ContactDeletedEvent;
 import ua.com.besqueet.mtwain.separpicker.events.ContactItemClickEvent;
 import ua.com.besqueet.mtwain.separpicker.events.ContactsListChangedEvent;
 
-public class ContactsListFragment extends Fragment{
+public class ContactsListFragment extends Fragment implements Constants{
 
     public ContactsListFragment(){}
 
@@ -33,7 +38,6 @@ public class ContactsListFragment extends Fragment{
     ContactsAdapter contactsAdapter;
     ContactsController contactsInstance;
     BusController busInstance;
-
     ArrayList<Contact> contacts = new ArrayList<>();
 
     @Override
@@ -53,10 +57,49 @@ public class ContactsListFragment extends Fragment{
         contactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                view.setSelected(true);
-                busInstance.getBus().post(new ContactItemClickEvent(contacts.get(i)));
+                if(!UtilsController.INSTANCE.isTablet()) {
+                    long id = contacts.get(i).id;
+                    Bundle bundle = new Bundle();
+                    bundle.putLong(BUNDLE_CONTACT_ID,id);
+                    Fragment fragment = new ContactDetailFragment();
+                    fragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction()
+                            .add(R.id.containerContacts,fragment)
+                            .addToBackStack("")
+                            .commit();
+
+                }else{
+                    busInstance.getBus().post(new ContactItemClickEvent(contacts.get(i)));
+                }
             }
         });
+
+            contactList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(final AdapterView<?> adapterView, View view, final int i, long l) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Видалити контакт ?")
+                            .setNegativeButton("Відмінити", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                }
+                            })
+                            .setPositiveButton("Так", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    contactsInstance.deleteContact(contacts.get(i).id);
+                                    contacts.remove(i);
+                                    contactsAdapter.notifyDataSetChanged();
+                                    if(UtilsController.INSTANCE.isTablet()) {
+                                        busInstance.getBus().post(new ContactDeletedEvent());
+                                    }
+                                }
+                            });
+                    builder.create().show();
+                    return true;
+                }
+            });
+
         return rootView;
     }
 
@@ -71,6 +114,11 @@ public class ContactsListFragment extends Fragment{
     public void onStop() {
         busInstance.getBus().unregister(this);
         super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     class ContactsAdapter extends BaseAdapter{
@@ -113,7 +161,7 @@ public class ContactsListFragment extends Fragment{
 
     @Subscribe
     public void onContactsListChangedListener(ContactsListChangedEvent event){
-        contacts = event.contacts;
+        contacts = contactsInstance.getContacts();
         contactsAdapter.notifyDataSetChanged();
     }
 

@@ -18,7 +18,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/toolbar_background"
             android:layout_marginLeft="2dp"
-            android:padding="12dp" />
+            android:padding="16dp" />
 
         <ImageView
             android:layout_width="@dimen/tool_bar_size"
@@ -29,7 +29,7 @@
             android:background="@drawable/toolbar_background"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
-            android:padding="12dp" />
+            android:padding="16dp" />
 
         <ImageView
             android:layout_width="@dimen/tool_bar_size"
@@ -40,6 +40,6 @@
             android:background="@drawable/toolbar_background"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
-            android:padding="12dp" />
+            android:padding="16dp" />
     </RelativeLayout>
 </RelativeLayout>

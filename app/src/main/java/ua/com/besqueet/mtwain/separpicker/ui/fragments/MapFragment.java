@@ -29,7 +29,6 @@ public class MapFragment extends Fragment implements ToolBarKeeper{
     @InjectView(R.id.btnShots)
     ImageView btnShots;
 
-
     VectorController vectorInstance;
     BusController busInstance;
 
@@ -38,7 +37,6 @@ public class MapFragment extends Fragment implements ToolBarKeeper{
         super.onCreate(savedInstanceState);
         vectorInstance = VectorController.INSTANCE;
         busInstance = BusController.INSTANCE;
-
     }
 
     @Override

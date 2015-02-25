@@ -53,15 +53,16 @@ public class NewContactFragment extends Fragment implements ToolBarKeeper{
 
     @OnClick(R.id.btnSave) void onSaveBtnClick(){
         if(!editCall.getText().equals("")&&!editEmail.getText().equals("")&&!editNumber.getText().equals("")){
-            if(!ContactsController.INSTANCE.isContains(editCall.getText().toString())) {
                 Contact contact = new Contact();
                 contact.call = editCall.getText().toString();
                 contact.email = editEmail.getText().toString();
                 contact.number = editNumber.getText().toString();
                 contact.id = System.currentTimeMillis();
-                ContactsController.INSTANCE.addContact(contact);
-                getFragmentManager().popBackStack();
-            }
+                //додаємо контакт в бд
+                if(!ContactsController.INSTANCE.isNameExists(contact.call)) {
+                    ContactsController.INSTANCE.addContact(contact);
+                    getFragmentManager().popBackStack();
+                }
         }
     }
 

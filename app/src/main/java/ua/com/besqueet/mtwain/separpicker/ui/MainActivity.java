@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
         contextInstance.setMainActivity(this);
         busInstance.setBus(TinyBus.from(this));
         vectorInstance.loadVectors(this);
-        contactsInstance.loadContacts();
+        contactsInstance.initContactsDB(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

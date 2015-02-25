@@ -1,64 +1,113 @@
 package ua.com.besqueet.mtwain.separpicker.controllers;
 
 
-import android.os.AsyncTask;
+import android.content.Context;
+import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.snappydb.DB;
+import com.snappydb.DBFactory;
+import com.snappydb.SnappydbException;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import ua.com.besqueet.mtwain.separpicker.Constants;
+import ua.com.besqueet.mtwain.separpicker.Contract;
 import ua.com.besqueet.mtwain.separpicker.data.Contact;
 import ua.com.besqueet.mtwain.separpicker.events.ContactsListChangedEvent;
 
 public enum ContactsController implements Constants {
 
     INSTANCE;
+    private static final String L = "ContactsController";
+    private DB dbContacts = null;
 
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    public void initContactsDB(Context context){
+        try {
+            dbContacts = DBFactory.open(context,Contract.DB_CONTACTS_NAME);
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addContact(Contact contact){
-        contacts.add(contact);
-        Type type = new TypeToken<ArrayList<Contact>>(){}.getType();
-        String jsonContacts = new Gson().toJson(contacts, type);
-        UtilsController.INSTANCE.saveData(CONTACTS,jsonContacts);
-        BusController.INSTANCE.getBus().post(new ContactsListChangedEvent(contacts));
-    }
-
-    public void setContacts(ArrayList<Contact> newContacts){
-        contacts = newContacts;
-    }
-
-    public ArrayList<Contact> loadContacts(){
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                String jsonContacts = UtilsController.INSTANCE.loadData(CONTACTS);
-                Type type = new TypeToken<ArrayList<Contact>>(){}.getType();
-                contacts = new Gson().fromJson(jsonContacts,type);
-                return null;
-            }
-        }.execute();
-
-        if(contacts==null){
-            contacts = new ArrayList<Contact>();
-            return new ArrayList<Contact>();
+        try {
+            ArrayList<Contact> loadedContacts = getContacts();
+            loadedContacts.add(contact);
+            dbContacts.put(Contract.KEY_CONTACTS,loadedContacts);
+            Log.d(L,"Add contact final size: "+loadedContacts.size());
+            BusController.INSTANCE.getBus().post(new ContactsListChangedEvent());
+        } catch (SnappydbException e) {
+            e.printStackTrace();
         }
-        return contacts;
     }
 
     public ArrayList<Contact> getContacts(){
-        return contacts;
+        try {
+            ArrayList<Contact> retrievedContacts = (ArrayList<Contact>) dbContacts.getObject(Contract.KEY_CONTACTS, ArrayList.class);
+            Log.d(L,"Get contacts: "+retrievedContacts.size());
+            return retrievedContacts;
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
-    public boolean isContains(String name){
-        loadContacts();
-        for (int i=0;i<contacts.size();i++){
-            return contacts.get(i).call.equals(name);
+    public  Contact getContactById(Long id){
+        ArrayList<Contact> loadedContacts = getContacts();
+        for (int i=0;i<loadedContacts.size();i++){
+            if(loadedContacts.get(i).id==id){
+                return loadedContacts.get(i);
+            }
+        }
+        return null;
+    }
+
+    public boolean isNameExists(String name){
+        ArrayList<Contact> loadedContacts = getContacts();
+        for (int i=0;i<loadedContacts.size();i++){
+            if(loadedContacts.get(i).call.equals(name)){
+                return true;
+            }
         }
         return false;
     }
 
+    public void deleteContact(Long id){
+        ArrayList<Contact> loadedContact = getContacts();
+        for (int i=0;i<loadedContact.size();i++){
+            if (loadedContact.get(i).id==id){
+                loadedContact.remove(i);
+            }
+        }
+        try {
+            dbContacts.put(Contract.KEY_CONTACTS,loadedContact);
+        }
+        catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editContact(Long id,String call,String email,String number){
+        ArrayList<Contact> loadedContact = getContacts();
+        for (int i=0;i<loadedContact.size();i++){
+            if (loadedContact.get(i).id==id){
+                loadedContact.get(i);
+                if(call!=null){
+                    loadedContact.get(i).call = call;
+                }
+                if(email!=null){
+                    loadedContact.get(i).email = email;
+                }
+                if(number!=null){
+                    loadedContact.get(i).number = number;
+                }
+            }
+        }
+        try {
+            dbContacts.put(Contract.KEY_CONTACTS,loadedContact);
+        }
+        catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+    }
 }
