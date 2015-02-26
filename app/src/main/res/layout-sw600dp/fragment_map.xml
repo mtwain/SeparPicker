@@ -18,7 +18,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/toolbar_background"
             android:layout_marginLeft="2dp"
-            android:padding="12dp"
+            android:padding="16dp"
             android:src="@drawable/ic_action_settings" />
 
         <ImageView
@@ -30,7 +30,7 @@
             android:background="@drawable/toolbar_background"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
-            android:padding="12dp"
+            android:padding="16dp"
             android:src="@drawable/ic_action_list" />
 
         <ImageView
@@ -42,7 +42,7 @@
             android:background="@drawable/toolbar_background"
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
-            android:padding="12dp"
+            android:padding="16dp"
             android:src="@drawable/ic_action_users" />
     </RelativeLayout>
 </RelativeLayout>

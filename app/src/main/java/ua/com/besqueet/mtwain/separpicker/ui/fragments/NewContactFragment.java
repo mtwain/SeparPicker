@@ -13,12 +13,10 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import ua.com.besqueet.mtwain.separpicker.R;
-import ua.com.besqueet.mtwain.separpicker.ToolBarKeeper;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
-import ua.com.besqueet.mtwain.separpicker.controllers.VectorController;
 import ua.com.besqueet.mtwain.separpicker.data.Contact;
 
-public class NewContactFragment extends Fragment implements ToolBarKeeper{
+public class NewContactFragment extends Fragment{
 
     public NewContactFragment(){}
 
@@ -28,14 +26,10 @@ public class NewContactFragment extends Fragment implements ToolBarKeeper{
     EditText editEmail;
     @InjectView(R.id.editNumber)
     EditText editNumber;
-    @InjectView(R.id.btnBack)
-    ImageView btnBack;
-    VectorController vectorInstance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vectorInstance = VectorController.INSTANCE;
     }
 
     @Override
@@ -47,7 +41,6 @@ public class NewContactFragment extends Fragment implements ToolBarKeeper{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_new_contact,container,false);
         ButterKnife.inject(this, rootView);
-        createView();
         return rootView;
     }
 
@@ -74,9 +67,4 @@ public class NewContactFragment extends Fragment implements ToolBarKeeper{
         getFragmentManager().popBackStack();
     }
 
-    @Override
-    public void createView() {
-        btnBack.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        btnBack.setImageDrawable(vectorInstance.back);
-    }
 }

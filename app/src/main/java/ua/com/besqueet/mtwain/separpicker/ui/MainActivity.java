@@ -14,7 +14,6 @@ import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
 import ua.com.besqueet.mtwain.separpicker.controllers.UtilsController;
-import ua.com.besqueet.mtwain.separpicker.controllers.VectorController;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.MapFragment;
 
 
@@ -24,7 +23,6 @@ public class MainActivity extends Activity {
     ContextController contextInstance;
     BusController busInstance;
     UtilsController utilsInstance;
-    VectorController vectorInstance;
     ContactsController contactsInstance;
 
     @Override
@@ -32,7 +30,6 @@ public class MainActivity extends Activity {
         busInstance = BusController.INSTANCE;
         contextInstance = ContextController.INSTANCE;
         utilsInstance = UtilsController.INSTANCE;
-        vectorInstance = VectorController.INSTANCE;
         contactsInstance = ContactsController.INSTANCE;
 
         isTablet = getResources().getBoolean(R.bool.isTablet);
@@ -43,7 +40,6 @@ public class MainActivity extends Activity {
 
         contextInstance.setMainActivity(this);
         busInstance.setBus(TinyBus.from(this));
-        vectorInstance.loadVectors(this);
         contactsInstance.initContactsDB(this);
 
         super.onCreate(savedInstanceState);
