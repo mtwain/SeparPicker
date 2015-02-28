@@ -19,7 +19,7 @@
             android:background="@drawable/toolbar_background"
             android:layout_marginLeft="2dp"
             android:padding="12dp"
-            android:src="@drawable/ic_action_settings" />
+            android:src="@drawable/ic_settings_white" />
 
         <ImageView
             android:layout_width="@dimen/tool_bar_size"
@@ -31,7 +31,7 @@
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:padding="12dp"
-            android:src="@drawable/ic_action_list" />
+            android:src="@drawable/ic_view_list_white" />
 
         <ImageView
             android:layout_width="@dimen/tool_bar_size"
@@ -43,6 +43,6 @@
             android:layout_marginRight="2dp"
             android:layout_marginLeft="2dp"
             android:padding="12dp"
-            android:src="@drawable/ic_action_users" />
+            android:src="@drawable/ic_people_white" />
     </RelativeLayout>
 </RelativeLayout>

@@ -14,9 +14,9 @@
             android:id="@+id/btnBack"
             android:layout_alignParentRight="false"
             android:background="@drawable/toolbar_background"
-            android:padding="16dp"
+            android:padding="@dimen/back_btn_padding"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_action_back" />
+            android:src="@drawable/ic_arrow_back_white" />
 
         <TextView
             android:layout_width="wrap_content"
