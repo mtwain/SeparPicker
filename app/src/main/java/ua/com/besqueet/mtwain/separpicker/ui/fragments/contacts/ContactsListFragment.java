@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts;
 
 
 import android.app.AlertDialog;
@@ -62,8 +62,10 @@ public class ContactsListFragment extends Fragment implements Constants{
                     Bundle bundle = new Bundle();
                     bundle.putLong(BUNDLE_CONTACT_ID,id);
                     Fragment fragment = new ContactDetailFragment();
+
                     fragment.setArguments(bundle);
                     getFragmentManager().beginTransaction()
+
                             .add(R.id.containerContacts,fragment)
                             .addToBackStack("")
                             .commit();
@@ -145,7 +147,7 @@ public class ContactsListFragment extends Fragment implements Constants{
             if (vi == null) {
                 vi = inflater.inflate(R.layout.cell_contact, viewGroup, false);
                 holder = new ViewHolder();
-                holder.textName = (TextView) vi.findViewById(R.id.textName);
+                holder.textName = (TextView) vi.findViewById(R.id.textTime);
                 vi.setTag(holder);
             }else {
                 holder = (ViewHolder) vi.getTag();

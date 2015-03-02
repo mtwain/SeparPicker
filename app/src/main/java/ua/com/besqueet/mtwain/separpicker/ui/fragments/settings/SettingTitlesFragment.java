@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.settings;
 
 
 import android.app.Fragment;
@@ -49,16 +49,16 @@ public class SettingTitlesFragment extends Fragment {
         presentDetailFragment(new SettingMainFragment());
     }
     @OnClick(R.id.itemSecurity) void onSecurityItemClick(){
-        itemMain.setBackgroundResource(R.drawable.text_item_background);
+        /*itemMain.setBackgroundResource(R.drawable.text_item_background);
         itemOptional.setBackgroundResource(R.drawable.text_item_background);
         itemSecurity.setBackgroundResource(R.drawable.text_item_background_selected);
-        presentDetailFragment(new SettingSecurityFragment());
+        presentDetailFragment(new SettingSecurityFragment());*/
     }
     @OnClick(R.id.itemOptional) void onOptionalItemClick(){
-        itemMain.setBackgroundResource(R.drawable.text_item_background);
+        /*itemMain.setBackgroundResource(R.drawable.text_item_background);
         itemOptional.setBackgroundResource(R.drawable.text_item_background_selected);
         itemSecurity.setBackgroundResource(R.drawable.text_item_background);
-        presentDetailFragment(new SettingOptionalFragment());
+        presentDetailFragment(new SettingOptionalFragment());*/
     }
 
     public void presentDetailFragment(Fragment fragment){

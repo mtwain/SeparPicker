@@ -9,10 +9,12 @@ import android.os.Bundle;
 import de.halfbit.tinybus.Subscribe;
 import de.halfbit.tinybus.TinyBus;
 import de.halfbit.tinybus.wires.ConnectivityWire;
+import ua.com.besqueet.mtwain.separpicker.FragmentAnimationDirection;
 import ua.com.besqueet.mtwain.separpicker.R;
 import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
+import ua.com.besqueet.mtwain.separpicker.controllers.ShotsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.UtilsController;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.MapFragment;
 
@@ -24,6 +26,7 @@ public class MainActivity extends Activity {
     BusController busInstance;
     UtilsController utilsInstance;
     ContactsController contactsInstance;
+    ShotsController shotsInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class MainActivity extends Activity {
         contextInstance = ContextController.INSTANCE;
         utilsInstance = UtilsController.INSTANCE;
         contactsInstance = ContactsController.INSTANCE;
+        shotsInstance = ShotsController.INSTANCE;
 
         isTablet = getResources().getBoolean(R.bool.isTablet);
         utilsInstance.setTablet(isTablet);
@@ -40,7 +44,8 @@ public class MainActivity extends Activity {
 
         contextInstance.setMainActivity(this);
         busInstance.setBus(TinyBus.from(this));
-        contactsInstance.initContactsDB(this);
+        contactsInstance.initDBforContacts(this);
+        shotsInstance.initDBforShot(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -75,13 +80,47 @@ public class MainActivity extends Activity {
 
     public void presentFragment(Fragment fragment){
         getFragmentManager().beginTransaction()
-                .replace(R.id.container,fragment)
+                .setCustomAnimations(R.animator.slide_in_from_bottom,
+                        R.animator.slide_out_to_top,
+                        R.animator.slide_in_from_bottom,
+                        R.animator.slide_out_to_top)
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
-    public void presentFragmentAbove(Fragment fragment){
+    public void presentFragmentAbove(Fragment fragment,FragmentAnimationDirection side){
+
+        int first_in=0;
+        int second_out=0;
+        int second_in=0;
+        int first_out=0;
+
+        if(FragmentAnimationDirection.FROM_LEFT.equals(side)){
+            first_in = R.animator.slide_in_from_left;
+            second_out = R.animator.slide_out_to_right;
+            second_in = R.animator.slide_in_from_right;
+            first_out = R.animator.slide_out_to_left;
+        }else if(FragmentAnimationDirection.FROM_RIGHT.equals(side)){
+            first_in = R.animator.slide_in_from_right;
+            second_out = R.animator.slide_out_to_left;
+            second_in = R.animator.slide_in_from_left;
+            first_out = R.animator.slide_out_to_right;
+        }else if(FragmentAnimationDirection.FROM_BOTTOM.equals(side)){
+            first_in = R.animator.slide_in_from_bottom;
+            second_out = R.animator.slide_out_to_top;
+            second_in = R.animator.slide_in_from_top;
+            first_out = R.animator.slide_out_to_bottom;
+        }
+
+
         getFragmentManager().beginTransaction()
-                .replace(R.id.container,fragment)
+                .setCustomAnimations(
+                    first_in,
+                    second_out,
+                    second_in,
+                    first_out
+                )
+                .replace(R.id.container, fragment)
                 .addToBackStack("")
                 .commit();
     }

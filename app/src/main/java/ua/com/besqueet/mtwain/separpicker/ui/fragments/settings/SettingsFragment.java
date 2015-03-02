@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.settings;
 
 import android.app.Fragment;
 import android.os.Bundle;

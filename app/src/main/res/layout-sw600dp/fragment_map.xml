@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ua.com.besqueet.mtwain.separpicker.ui.view.SlidingRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/white"
     >
@@ -45,4 +45,4 @@
             android:padding="16dp"
             android:src="@drawable/ic_people_white" />
     </RelativeLayout>
-</RelativeLayout>
+</ua.com.besqueet.mtwain.separpicker.ui.view.SlidingRelativeLayout>

@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.settings;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import ua.com.besqueet.mtwain.separpicker.R;
 
-public class SettingOptionalFragment extends Fragment {
+public class SettingSecurityFragment extends Fragment {
 
-    public SettingOptionalFragment(){}
+    public SettingSecurityFragment(){}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,10 @@ public class SettingOptionalFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_setting_optional,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_setting_security,container,false);
         ButterKnife.inject(this, rootView);
         return rootView;
     }
-
 
 }
 

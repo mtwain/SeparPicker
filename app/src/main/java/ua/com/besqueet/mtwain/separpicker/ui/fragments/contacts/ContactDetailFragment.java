@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts;
 
 
 import android.app.AlertDialog;
@@ -34,9 +34,9 @@ public class ContactDetailFragment extends Fragment implements Constants {
 
     @InjectView(R.id.root_layout)
     LinearLayout rootLayout;
-    @InjectView(R.id.textCall)
+    @InjectView(R.id.textTime)
     TextView textCall;
-    @InjectView(R.id.textEmail)
+    @InjectView(R.id.textCount)
     TextView textEmail;
     @InjectView(R.id.textNumber)
     TextView textNumber;
@@ -113,7 +113,7 @@ public class ContactDetailFragment extends Fragment implements Constants {
     }
 
 
-    @OnClick(R.id.editCall) void onEditCallClick(){
+    @OnClick(R.id.editName) void onEditCallClick(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edittext_view, null);

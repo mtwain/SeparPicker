@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ua.com.besqueet.mtwain.separpicker.ui.view.SlidingRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editCall"
+                android:id="@+id/editName"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_alignParentBottom="true"
@@ -57,7 +57,7 @@
                 android:id="@+id/textView14"
                 android:layout_marginLeft="16dp"
                 android:textColor="@color/text_item_color"
-                android:layout_above="@+id/editCall"
+                android:layout_above="@+id/editName"
                 android:layout_marginBottom="4dp" />
         </RelativeLayout>
 
@@ -146,4 +146,4 @@
             android:background="@drawable/toolbar_background" />
     </LinearLayout>
 
-</RelativeLayout>
+</ua.com.besqueet.mtwain.separpicker.ui.view.SlidingRelativeLayout>

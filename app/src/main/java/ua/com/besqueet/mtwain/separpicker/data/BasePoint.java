@@ -1,18 +1,20 @@
 package ua.com.besqueet.mtwain.separpicker.data;
 
-import android.location.Location;
-
-import ua.com.besqueet.mtwain.separpicker.ShotType;
+import ua.com.besqueet.mtwain.separpicker.PointType;
 
 public class BasePoint {
 
-    public BasePoint(ShotType pointType, String pointName, Location pointLocation){
+    public BasePoint(){};
+
+    public BasePoint(PointType pointType, String pointName,double pointLat,double pointLon){
         type = pointType;
         name = pointName;
-        location = pointLocation;
+        lat = pointLat;
+        lon = pointLon;
     }
 
+    public double lat;
+    public double lon;
     public String name;
-    public Location location;
-    public ShotType type;
+    public PointType type;
 }

@@ -10,4 +10,5 @@ public interface Constants {
     public final String CONTACT_NAMES = "contact_names";
     public final String SHOT_NAMES = "contact_names";
     public final String BUNDLE_CONTACT_ID = "contact_id";
+    public final String BUNDLE_SHOT_ID = "shot_id";
 }

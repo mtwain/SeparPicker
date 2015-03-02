@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -11,9 +11,10 @@
         android:text="Основні"
         android:id="@+id/itemMain"
         android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:textColor="@color/text_item_color"
-        android:background="@drawable/text_item_background" />
+        android:background="@drawable/text_item_background"
+        android:paddingLeft="16dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -22,9 +23,11 @@
         android:text="Безпека"
         android:id="@+id/itemSecurity"
         android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:textColor="@color/text_item_color"
-        android:background="@drawable/text_item_background" />
+        android:background="@drawable/text_item_background"
+        android:paddingLeft="16dp"
+        android:enabled="false" />
 
     <TextView
         android:layout_width="match_parent"
@@ -33,7 +36,8 @@
         android:text="Додаткові"
         android:id="@+id/itemOptional"
         android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:textColor="@color/text_item_color"
-        android:background="@drawable/text_item_background" />
-</LinearLayout>
+        android:background="@drawable/text_item_background"
+        android:paddingLeft="16dp" />
+</ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout>

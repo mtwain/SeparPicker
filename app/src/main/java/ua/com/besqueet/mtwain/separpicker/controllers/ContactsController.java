@@ -19,21 +19,23 @@ public enum ContactsController implements Constants {
 
     INSTANCE;
     private static final String L = "ContactsController";
-    private DB dbContacts = null;
+    DB db = null;
 
-    public void initContactsDB(Context context){
+
+    public void initDBforContacts(Context context){
         try {
-            dbContacts = DBFactory.open(context,Contract.DB_CONTACTS_NAME);
+            db = DBFactory.open(context, Contract.DB_NAME);
         } catch (SnappydbException e) {
             e.printStackTrace();
         }
     }
 
+
     public void addContact(Contact contact){
         try {
             ArrayList<Contact> loadedContacts = getContacts();
             loadedContacts.add(contact);
-            dbContacts.put(Contract.KEY_CONTACTS,loadedContacts);
+            db.put(Contract.KEY_CONTACTS, loadedContacts);
             Log.d(L,"Add contact final size: "+loadedContacts.size());
             BusController.INSTANCE.getBus().post(new ContactsListChangedEvent());
         } catch (SnappydbException e) {
@@ -43,10 +45,13 @@ public enum ContactsController implements Constants {
 
     public ArrayList<Contact> getContacts(){
         try {
-            ArrayList<Contact> retrievedContacts = (ArrayList<Contact>) dbContacts.getObject(Contract.KEY_CONTACTS, ArrayList.class);
+            ArrayList<Contact> retrievedContacts = (ArrayList<Contact>) db.getObject(Contract.KEY_CONTACTS, ArrayList.class);
             Log.d(L,"Get contacts: "+retrievedContacts.size());
             return retrievedContacts;
         } catch (SnappydbException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } catch (NullPointerException e){
             e.printStackTrace();
             return new ArrayList<>();
         }
@@ -80,7 +85,7 @@ public enum ContactsController implements Constants {
             }
         }
         try {
-            dbContacts.put(Contract.KEY_CONTACTS,loadedContact);
+            db.put(Contract.KEY_CONTACTS, loadedContact);
         }
         catch (SnappydbException e) {
             e.printStackTrace();
@@ -104,7 +109,7 @@ public enum ContactsController implements Constants {
             }
         }
         try {
-            dbContacts.put(Contract.KEY_CONTACTS,loadedContact);
+            db.put(Contract.KEY_CONTACTS, loadedContact);
         }
         catch (SnappydbException e) {
             e.printStackTrace();

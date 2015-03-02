@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Контакти"
+                android:text="Шоти"
                 android:id="@+id/barTitle"
                 android:layout_toRightOf="@+id/btnBack"
                 android:layout_centerVertical="true"
@@ -65,4 +65,5 @@
         android:layout_marginRight="16dp"
         android:padding="16dp"
         android:src="@drawable/ic_add_white" />
+
 </ua.com.besqueet.mtwain.separpicker.ui.view.SlidingRelativeLayout>

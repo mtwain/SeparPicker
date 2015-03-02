@@ -3,8 +3,40 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:visibility="visible"
+    android:visibility="invisible"
     android:id="@+id/root_layout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:layout_gravity="center_horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textTime"
+            android:clickable="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/text_item_color"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дата останнього редагування"
+            android:id="@+id/textView1213"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@+id/textTime" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textTime"
+            android:id="@+id/textName"
             android:clickable="true"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
@@ -38,29 +70,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Позивний"
+            android:text="Назва"
             android:id="@+id/textView9"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:layout_above="@+id/textTime"
             android:layout_marginLeft="16dp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="50dp"
         android:clickable="false"
         android:layout_gravity="center_horizontal">
-
-        <ImageView
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:id="@+id/editEmail"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
-            android:background="@drawable/text_item_background" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -77,7 +98,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email адреса"
+            android:text="Кількість позначок"
             android:id="@+id/textView11"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
@@ -87,25 +108,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="50dp"
         android:clickable="false"
         android:layout_gravity="center_horizontal">
-
-        <ImageView
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:id="@+id/editNumber"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
-            android:background="@drawable/text_item_background" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textNumber"
+            android:id="@+id/textIsSended"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -116,12 +127,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Номер телефону"
-            android:id="@+id/textView13"
+            android:text="Статус відправки"
+            android:id="@+id/textStatus"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:layout_above="@+id/textNumber"
             android:layout_marginLeft="16dp" />
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Переглянути/Редагувати"
+        android:id="@+id/btnEdit"
+        android:gravity="center_vertical|center_horizontal" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Відправити"
+        android:id="@+id/btnSend"
+        android:gravity="center_vertical|center_horizontal" />
 
 </ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout>

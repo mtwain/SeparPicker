@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,12 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import ua.com.besqueet.mtwain.separpicker.FragmentAnimationDirection;
 import ua.com.besqueet.mtwain.separpicker.R;
 import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
@@ -68,7 +68,7 @@ public class ContactsFragment extends Fragment {
 
 
     @OnClick(R.id.btnAdd) void onAddBtnClick(){
-        ContextController.INSTANCE.getMainActivity().presentFragmentAbove(new NewContactFragment());
+        ContextController.INSTANCE.getMainActivity().presentFragmentAbove(new NewContactFragment(), FragmentAnimationDirection.FROM_BOTTOM);
     }
 
     @OnClick(R.id.btnBack) void onBackBtnClick(){

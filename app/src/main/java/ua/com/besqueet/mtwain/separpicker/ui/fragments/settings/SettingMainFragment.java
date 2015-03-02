@@ -1,4 +1,4 @@
-package ua.com.besqueet.mtwain.separpicker.ui.fragments;
+package ua.com.besqueet.mtwain.separpicker.ui.fragments.settings;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -21,9 +21,9 @@ public class SettingMainFragment extends Fragment implements Constants{
 
     public SettingMainFragment(){}
 
-    @InjectView(R.id.textCall)
+    @InjectView(R.id.textTime)
     TextView textCall;
-    @InjectView(R.id.textEmail)
+    @InjectView(R.id.textCount)
     TextView textEmail;
     @InjectView(R.id.textPassword)
     TextView textPassword;
