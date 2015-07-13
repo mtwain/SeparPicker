@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -315,8 +316,9 @@ public class MapFragment extends Fragment implements Constants {
     public void showDialogWindow(String d_name, final Integer num) {
         String dialog_name = d_name;
         cdd = new CustomDialogClass(ContextController.INSTANCE.getMainActivity());
+        cdd.requestWindowFeature(Window.FEATURE_NO_TITLE);
         cdd.setContentView(R.layout.custom_dialog);
-        cdd.setTitle(dialog_name);
+        //cdd.setTitle(dialog_name);
         cdd.show();
         dialogButton = (FrameLayout) cdd.findViewById(R.id.btn_save_dialog);
         dialogButton.setOnClickListener(new View.OnClickListener() {

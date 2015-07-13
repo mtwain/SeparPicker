@@ -293,8 +293,8 @@ public class ShotDetailFragment extends Fragment implements Constants {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edittext_view, null);
-        TextView textView = (TextView) view.findViewById(R.id.textTitle);
-        textView.setText("Назва");
+        //TextView textView = (TextView) view.findViewById(R.id.textTitle);
+        //textView.setText("Назва");
         final EditText editText = (EditText) view.findViewById(R.id.editName);
         editText.setText(textName.getText());
         editText.setSelection(editText.getText().length(),editText.getText().length());
