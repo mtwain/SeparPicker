@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,17 +50,14 @@ public class ShotDetailFragment extends Fragment implements Constants {
     BusController busInstance;
 
     @InjectView(R.id.root_layout)
-    LinearLayout rootLayout;
+    RelativeLayout rootLayout;
     @InjectView(R.id.textTime)
     TextView textTime;
     @InjectView(R.id.textName)
     TextView textName;
     @InjectView(R.id.textCount)
     TextView textCount;
-    @InjectView(R.id.textIsSended)
-    TextView textSended;
-    @InjectView(R.id.btnBLDevice)
-    TextView btnBLDevice;
+
 
     Long idShot;
     public ArrayList<BaseMarker> markers;
@@ -125,15 +123,6 @@ public class ShotDetailFragment extends Fragment implements Constants {
     }
 
     public void setValues(ShotType shotType,String name,boolean status,int count,String time){
-        if(shotType.equals(ShotType.IN)){
-            textSended.setText("Отриманий");
-        }else {
-            if(status){
-                textSended.setText("Відправлений");
-            }else {
-                textSended.setText("Не відправлений");
-            }
-        }
         textName.setText(name);
         textTime.setText(""+time);
         textCount.setText(count+"");
@@ -156,22 +145,12 @@ public class ShotDetailFragment extends Fragment implements Constants {
         if(event.shot!=null) {
             tabletShotPoints = new ArrayList<>();
             idShot = event.shot.id;
-            Log.d("L", "Event: " + textCount + " | " + textTime + " | " + textSended);
             rootLayout.setVisibility(View.VISIBLE);
             textName.setText(event.shot.name);
             textCount.setText(event.shot.points.size()+"");
             textTime.setText(""+event.shot.time);
 
-            if(event.shot.type.equals(ShotType.IN)){
-                textSended.setText("Отриманий");
-            }else {
-                OutShot outShot = (OutShot) event.shot;
-                if(outShot.isSended){
-                    textSended.setText("Відправлений");
-                }else {
-                    textSended.setText("Не відправлений");
-                }
-            }
+
             tabletShotPoints = event.shot.points;
             tabletShotName = event.shot.name;
         }else {
@@ -179,7 +158,7 @@ public class ShotDetailFragment extends Fragment implements Constants {
         }
     }
 
-    @OnClick(R.id.btnShow) void onBtnEditClick(){
+    @OnClick(R.id.show) void onBtnShowClick(){
         if(!UtilsController.INSTANCE.isTablet()) {
             ArrayList<BaseMarker> shotList = shot.points;
             setMapReviewFragment(shotList);
@@ -206,12 +185,11 @@ public class ShotDetailFragment extends Fragment implements Constants {
     public void onShotDeleted(ShotDeletedEvent event){
         textCount.setText("");
         textName.setText("");
-        textSended.setText("");
         textTime.setText("");
         rootLayout.setVisibility(View.INVISIBLE);
     }
 
-
+/*
 
     @OnClick(R.id.btnSend) void onBtnSendClick(){
         if(!UtilsController.INSTANCE.isTablet()) {
@@ -243,9 +221,9 @@ public class ShotDetailFragment extends Fragment implements Constants {
                     .addToBackStack("")
                     .commit();
         }
-    }
+    }*/
 
-    @OnClick(R.id.btnBLDevice) void onBtnChooseDeviceClick(){//TODO Прибрав це, для того, щоб не просило ввімкнути блютуз, коли вертаюсь назад до деталей шота з актівіті з лістом девайсів
+   /* @OnClick(R.id.btnBLDevice) void onBtnChooseDeviceClick(){//TODO Прибрав це, для того, щоб не просило ввімкнути блютуз, коли вертаюсь назад до деталей шота з актівіті з лістом девайсів
         if(BluetoothController.INSTANCE.checkBluetoothAvailable() == 1) {
             Toast.makeText(ContextController.INSTANCE.getMainActivity()
                     , "Bluetooth is not available"
@@ -275,18 +253,19 @@ public class ShotDetailFragment extends Fragment implements Constants {
         }
 
         BluetoothController.INSTANCE.setOnDataReceivedListener();
-        /*Intent intent = null;
+        *//*Intent intent = null;
         intent = new Intent(ContextController.INSTANCE.getMainActivity(), DeviceList.class);
-        startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);*/
+        startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);*//*
     }
+*/
 
-
-    @OnClick(R.id.btnSendBL) void sendBLMessage(){
-        if(!UtilsController.INSTANCE.isTablet()){
+    @OnClick(R.id.bluetooth) void onBluetoothClick(){
+        //TODO:
+       /* if(!UtilsController.INSTANCE.isTablet()){
             BluetoothController.INSTANCE.send(shot.points);
         }else{
             BluetoothController.INSTANCE.send(tabletShotPoints);
-        }
+        }*/
 
     }
 

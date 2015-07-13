@@ -56,9 +56,9 @@ public class ShotsFragment extends Fragment {
                     int count = getFragmentManager().getBackStackEntryCount();
                     Log.d("L", "Count: " + count);
                     if(count==2){
-                        barTitle.setText("Шот");
+                        barTitle.setText("Сцена");
                     }else if(count==1){
-                        barTitle.setText("Шоти");
+                        barTitle.setText("Сцени");
                     }
                 }
             }
