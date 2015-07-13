@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class ShotsListFragment extends Fragment implements Constants{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_shots_list,container,false);
         ButterKnife.inject(this, rootView);
+        Log.d("aaa", "oncvslf");
         shotsList.setAdapter(shotsAdapter);
         shotsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,16 +64,13 @@ public class ShotsListFragment extends Fragment implements Constants{
                     Bundle bundle = new Bundle();
                     bundle.putLong(BUNDLE_SHOT_ID,id);
                     Fragment fragment = new ShotDetailFragment();
-
                     fragment.setArguments(bundle);
                     getFragmentManager().beginTransaction()
-
                             .add(R.id.containerContacts,fragment)
                             .addToBackStack("")
                             .commit();
-
                 }else{
-                    busInstance.getBus().post(new ShotItemClickEvent(shots.get(i)));
+                        busInstance.getBus().post(new ShotItemClickEvent(shots.get(i)));
                 }
             }
         });

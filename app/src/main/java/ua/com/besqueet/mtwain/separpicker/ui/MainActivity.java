@@ -11,6 +11,7 @@ import de.halfbit.tinybus.TinyBus;
 import de.halfbit.tinybus.wires.ConnectivityWire;
 import ua.com.besqueet.mtwain.separpicker.FragmentAnimationDirection;
 import ua.com.besqueet.mtwain.separpicker.R;
+import ua.com.besqueet.mtwain.separpicker.controllers.BluetoothController;
 import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
@@ -27,6 +28,7 @@ public class MainActivity extends Activity {
     UtilsController utilsInstance;
     ContactsController contactsInstance;
     ShotsController shotsInstance;
+    BluetoothController bluetoothInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends Activity {
         utilsInstance = UtilsController.INSTANCE;
         contactsInstance = ContactsController.INSTANCE;
         shotsInstance = ShotsController.INSTANCE;
+        bluetoothInstance = BluetoothController.INSTANCE;
 
         isTablet = getResources().getBoolean(R.bool.isTablet);
         utilsInstance.setTablet(isTablet);
@@ -46,6 +49,7 @@ public class MainActivity extends Activity {
         busInstance.setBus(TinyBus.from(this));
         contactsInstance.initDBforContacts(this);
         shotsInstance.initDBforShot(this);
+        bluetoothInstance.setBluetooth();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

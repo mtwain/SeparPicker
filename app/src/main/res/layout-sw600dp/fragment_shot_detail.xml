@@ -64,7 +64,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
+            android:src="@drawable/ic_launcher"
             android:background="@drawable/text_item_background" />
 
         <TextView
@@ -136,14 +136,43 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Переглянути/Редагувати"
-        android:id="@+id/btnEdit"
+        android:text="Переглянути"
+        android:id="@+id/btnShow"
         android:gravity="center_vertical|center_horizontal" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Відправити"
+        android:text="Відправити через EMAIL"
         android:id="@+id/btnSend"
         android:gravity="center_vertical|center_horizontal" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:layout_gravity="center_horizontal"
+        android:padding="8dp">
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Вибрати отримувача по BLUETOOTH"
+            android:id="@+id/btnBLDevice"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center|center_horizontal" />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Відправити через BLUETOOTH"
+            android:id="@+id/btnSendBL"
+            android:layout_marginRight="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center|center_horizontal" />
+    </RelativeLayout>
 
 </ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout>

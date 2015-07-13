@@ -11,4 +11,6 @@ public interface Constants {
     public final String SHOT_NAMES = "contact_names";
     public final String BUNDLE_CONTACT_ID = "contact_id";
     public final String BUNDLE_SHOT_ID = "shot_id";
+    public final String MARKER_LIST = "MARKER_LIST";
+    public final String MARKER_NAME = "MARKER_NAME";
 }

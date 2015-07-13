@@ -1,20 +1,31 @@
 package ua.com.besqueet.mtwain.separpicker.data;
 
-import ua.com.besqueet.mtwain.separpicker.PointType;
+import android.os.Bundle;
+import android.util.Log;
 
-public class BasePoint {
+import com.google.android.gms.maps.model.LatLng;
 
-    public BasePoint(){};
+public class BasePoint extends BaseMarker {
 
-    public BasePoint(PointType pointType, String pointName,double pointLat,double pointLon){
-        type = pointType;
-        name = pointName;
-        lat = pointLat;
-        lon = pointLon;
+    public PointType pointType;
+    public double pointLat;
+    public double pointLon;
+
+    public BasePoint(){}
+
+    public BasePoint(LatLng latLng) {
+        super(latLng);
+        this.pointLat = latLng.latitude;
+        this.pointLon = latLng.longitude;
     }
 
-    public double lat;
-    public double lon;
-    public String name;
-    public PointType type;
+    public Bundle getPointposition() {
+        Bundle bundle = new Bundle();
+        bundle.putDouble("LATITUDE", markerLat);
+        bundle.putDouble("LONGITUDE", markerLon);
+        return bundle;
+    }
+    public void setPointposition(LatLng location) {this.pointLat = location.latitude; this.pointLon = location.longitude;}
+    public PointType getType() {return pointType;}
+    public void setType(PointType pointType) {this.pointType = pointType;}
 }

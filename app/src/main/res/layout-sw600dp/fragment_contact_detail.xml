@@ -30,7 +30,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
+            android:src="@drawable/ic_launcher"
             android:background="@drawable/text_item_background" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
+            android:src="@drawable/ic_launcher"
             android:background="@drawable/text_item_background" />
 
         <TextView
@@ -96,7 +96,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:padding="24dp"
-            android:src="@drawable/ic_mode_edit_grey600"
+            android:src="@drawable/ic_launcher"
             android:background="@drawable/text_item_background" />
 
         <TextView
