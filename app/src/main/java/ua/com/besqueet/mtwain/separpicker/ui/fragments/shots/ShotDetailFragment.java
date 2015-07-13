@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -41,6 +42,7 @@ import ua.com.besqueet.mtwain.separpicker.data.Shot;
 import ua.com.besqueet.mtwain.separpicker.data.ShotType;
 import ua.com.besqueet.mtwain.separpicker.events.ShotDeletedEvent;
 import ua.com.besqueet.mtwain.separpicker.events.ShotItemClickEvent;
+import ua.com.besqueet.mtwain.separpicker.events.ShotsListChangedEvent;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.MapReviewFragment;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts.ContactsListFragment2;
 
@@ -97,7 +99,11 @@ public class ShotDetailFragment extends Fragment implements Constants {
                 getFragmentManager().popBackStack();
                 Log.d("L","Шоту не існує");
             }
+
+
         }
+
+        ShotsController.INSTANCE.readShot(idShot);
         rootView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -266,8 +272,16 @@ public class ShotDetailFragment extends Fragment implements Constants {
         }else{
             BluetoothController.INSTANCE.send(tabletShotPoints);
         }*/
-
     }
+
+
+    @OnClick(R.id.sms) void onSmsClick(){
+        //TODO: code for sms sending - use after choosing recipient
+       /* SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage("Phone Number", null, "Message", null, null);*/
+    }
+
+
 
     public void starDeviceActivity(){
         Intent intent = null;

@@ -126,7 +126,6 @@ public enum  ShotsController {
         Log.d("aaa","CAMERAPOS="+cameraPosition);
 
         try {
-            Log.d(L,"addShot"+shot.points.size());
             ArrayList<Shot> loadedShots = getShots();
             loadedShots.add(shot);
             db.put(Contract.KEY_SHOTS, loadedShots);
@@ -215,6 +214,22 @@ public enum  ShotsController {
             db.put(Contract.KEY_SHOTS, loadedShots);
         }
         catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void readShot(Long id) {
+        ArrayList<Shot> loadedShots = getShots();
+        for (int i = 0; i < loadedShots.size(); i++) {
+            if (loadedShots.get(i).id.equals(id)) {
+                loadedShots.get(i).isRead = true;
+            }
+        }
+        try {
+            db.put(Contract.KEY_SHOTS, loadedShots);
+            BusController.INSTANCE.getBus().post(new ShotsListChangedEvent());
+        } catch (SnappydbException e) {
             e.printStackTrace();
         }
     }

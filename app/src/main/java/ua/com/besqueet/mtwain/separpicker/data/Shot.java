@@ -13,5 +13,6 @@ public class Shot {
     public String time;
     public ArrayList<BaseMarker> points = new ArrayList<>();
     public String comments = "";
+    public boolean isRead = false;
 
 }

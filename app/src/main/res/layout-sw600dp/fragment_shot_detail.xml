@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:visibility="invisible"
@@ -11,7 +14,8 @@
         android:layout_height="wrap_content"
         android:clickable="false"
         android:layout_gravity="center_horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:id="@+id/time_layout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -25,24 +29,29 @@
             android:layout_marginLeft="16dp"
             android:textColor="@color/text_item_color"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:layout_alignParentTop="true"
+            android:textSize="11dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Дата останнього редагування"
+            android:text="Редактовано:"
             android:id="@+id/textView1213"
             android:layout_alignParentLeft="false"
             android:layout_alignParentStart="false"
             android:layout_marginLeft="16dp"
-            android:layout_toLeftOf="@+id/textTime" />
+            android:layout_toLeftOf="@+id/textTime"
+            android:textSize="11dp" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="50dp"
         android:clickable="false"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/name_layout"
+        android:layout_below="@+id/time_layout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,21 +60,23 @@
             android:id="@+id/textName"
             android:clickable="true"
             android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
             android:gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="16dp"
-            android:textColor="@color/text_item_color" />
+            android:textColor="@color/text_item_color"
+            android:layout_toRightOf="@+id/textView9" />
 
         <ImageView
-            android:layout_width="78dp"
-            android:layout_height="78dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:id="@+id/editName"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:padding="24dp"
-            android:src="@drawable/ic_launcher"
-            android:background="@drawable/text_item_background" />
+            android:src="@drawable/ic_edit"
+            android:background="@drawable/text_item_background"
+            android:padding="10dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,14 +85,26 @@
             android:id="@+id/textView9"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_centerVertical="true" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffd8d8d8"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_alignParentBottom="true"></FrameLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:clickable="false"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/name_layout"
+        android:id="@+id/relativeLayout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,90 +112,80 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textCount"
             android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
             android:gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="16dp"
-            android:textColor="@color/text_item_color" />
+            android:textColor="@color/text_item_color"
+            android:layout_toRightOf="@+id/textView11" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Кількість позначок"
+            android:text="Кількість об&apos;єктів"
             android:id="@+id/textView11"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:layout_above="@+id/textCount"
-            android:layout_marginLeft="16dp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:clickable="false"
-        android:layout_gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textIsSended"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="16dp"
-            android:textColor="@color/text_item_color" />
+            android:layout_centerVertical="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Статус відправки"
-            android:id="@+id/textStatus"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:layout_marginLeft="16dp" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffd8d8d8"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Переглянути"
-        android:id="@+id/btnShow"
-        android:gravity="center_vertical|center_horizontal" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Відправити через EMAIL"
-        android:id="@+id/btnSend"
-        android:gravity="center_vertical|center_horizontal" />
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="false"
-        android:layout_gravity="center_horizontal"
-        android:padding="8dp">
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Вибрати отримувача по BLUETOOTH"
-            android:id="@+id/btnBLDevice"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            android:gravity="center|center_horizontal" />
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Відправити через BLUETOOTH"
-            android:id="@+id/btnSendBL"
-            android:layout_marginRight="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:gravity="center|center_horizontal" />
-    </RelativeLayout>
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_email"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_toLeftOf="@+id/bluetooth" />
 
-</ua.com.besqueet.mtwain.separpicker.ui.view.SlidingLinearLayout>
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_bluetooth"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_toLeftOf="@+id/sms" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/sms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_sms"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fbutton:cornerRadius="5dp"
+        android:drawableLeft="@drawable/ic_map"
+        android:text="Переглянути на карті"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="2dp" />
+
+</RelativeLayout>

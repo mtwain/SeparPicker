@@ -13,4 +13,25 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="32dp"
         android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/text_lasttimr"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:textSize="11dp"
+        android:textColor="@color/text_item_color"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_notification_overlay"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/new_ind" />
 </RelativeLayout>

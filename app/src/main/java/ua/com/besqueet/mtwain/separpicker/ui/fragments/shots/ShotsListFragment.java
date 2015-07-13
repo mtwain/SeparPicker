@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -147,17 +148,27 @@ public class ShotsListFragment extends Fragment implements Constants{
                 vi = inflater.inflate(R.layout.cell_shot, viewGroup, false);
                 holder = new ViewHolder();
                 holder.textName = (TextView) vi.findViewById(R.id.textTime);
+                holder.textTime = (TextView) vi.findViewById(R.id.text_lasttimr);
+                holder.indicatorNew = (ImageView) vi.findViewById(R.id.new_ind);
                 vi.setTag(holder);
             }else {
                 holder = (ViewHolder) vi.getTag();
             }
             holder.textName.setText(shots.get(i).name);
+            holder.textTime.setText(shots.get(i).time);
+            if(shots.get(i).isRead){
+                holder.indicatorNew.setVisibility(View.INVISIBLE);
+            }else {
+                holder.indicatorNew.setVisibility(View.VISIBLE);
+            }
             return vi;
         }
     }
 
     static class ViewHolder {
         TextView textName;
+        TextView textTime;
+        ImageView indicatorNew;
     }
 
     @Subscribe
