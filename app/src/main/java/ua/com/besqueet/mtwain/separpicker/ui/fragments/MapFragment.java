@@ -2,7 +2,6 @@ package ua.com.besqueet.mtwain.separpicker.ui.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -46,7 +45,6 @@ import butterknife.OnClick;
 import ua.com.besqueet.mtwain.separpicker.Constants;
 import ua.com.besqueet.mtwain.separpicker.FragmentAnimationDirection;
 import ua.com.besqueet.mtwain.separpicker.R;
-import ua.com.besqueet.mtwain.separpicker.controllers.BluetoothController;
 import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ShotsController;
@@ -335,7 +333,7 @@ public class MapFragment extends Fragment implements Constants {
                         textAbout = (EditText) cdd.findViewById(R.id.dialog_text_about);
                         dialog_text_about = textAbout.getText().toString();
                         textAbout.setText("");
-                        ShotsController.INSTANCE.addShot(dialog_text_about,cameraPosition);
+                        ShotsController.INSTANCE.saveShotFromMap(dialog_text_about);
                         showToast(1);
                         Log.d("aaa", "2--->" + dialog_text_about);
                         break;

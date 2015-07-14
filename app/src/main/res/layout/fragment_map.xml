@@ -55,6 +55,76 @@
             android:layout_marginLeft="2dp"
             android:padding="12dp"
             android:src="@drawable/ic_people_white" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switch_email"
+            style="@style/SwitchButtonStyle"
+            app:animationVelocity="8"
+            app:measureFactor="1.5"
+            app:offDrawable="@drawable/ios_off"
+            app:onColor="#43d95d"
+            app:thumbDrawable="@drawable/ios_thumb"
+            app:thumb_marginBottom="-8dp"
+            app:thumb_marginLeft="-5dp"
+            app:thumb_marginRight="-5dp"
+            app:thumb_marginTop="-2.5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp" />
+
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switch_bluetooth"
+            android:layout_alignParentRight="false"
+            style="@style/SwitchButtonStyle"
+            app:animationVelocity="8"
+            app:measureFactor="1.5"
+            app:offDrawable="@drawable/ios_off"
+            app:onColor="#43d95d"
+            app:thumbDrawable="@drawable/ios_thumb"
+            app:thumb_marginBottom="-8dp"
+            app:thumb_marginLeft="-5dp"
+            app:thumb_marginRight="-5dp"
+            app:thumb_marginTop="-2.5dp"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/switch_email"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/textView7"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:layout_above="@+id/switch_email"
+            android:layout_alignRight="@+id/switch_email"
+            android:layout_alignLeft="@+id/switch_email"
+            android:textColor="@color/white"
+            android:textSize="11dp"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bluetooth"
+            android:id="@+id/textView8"
+            android:textColor="@color/white"
+            android:textSize="11dp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="false"
+            android:layout_toEndOf="@+id/switch_email"
+            android:layout_alignLeft="@+id/switch_bluetooth"
+            android:layout_above="@+id/switch_bluetooth"
+            android:layout_alignRight="@+id/switch_bluetooth" />
+
     </RelativeLayout>
 
     <LinearLayout

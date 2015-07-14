@@ -13,4 +13,8 @@ public interface Constants {
     public final String BUNDLE_SHOT_ID = "shot_id";
     public final String MARKER_LIST = "MARKER_LIST";
     public final String MARKER_NAME = "MARKER_NAME";
+    enum SendingType{
+        EMAIL,
+        SMS
+    }
 }

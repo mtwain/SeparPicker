@@ -4,22 +4,18 @@ package ua.com.besqueet.mtwain.separpicker.ui.fragments.shots;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,9 +38,8 @@ import ua.com.besqueet.mtwain.separpicker.data.Shot;
 import ua.com.besqueet.mtwain.separpicker.data.ShotType;
 import ua.com.besqueet.mtwain.separpicker.events.ShotDeletedEvent;
 import ua.com.besqueet.mtwain.separpicker.events.ShotItemClickEvent;
-import ua.com.besqueet.mtwain.separpicker.events.ShotsListChangedEvent;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.MapReviewFragment;
-import ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts.ContactsListFragment2;
+import ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts.ContactsSelectionFragment;
 
 public class ShotDetailFragment extends Fragment implements Constants {
 
@@ -104,6 +99,7 @@ public class ShotDetailFragment extends Fragment implements Constants {
         }
 
         ShotsController.INSTANCE.readShot(idShot);
+
         rootView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
@@ -130,8 +126,8 @@ public class ShotDetailFragment extends Fragment implements Constants {
 
     public void setValues(ShotType shotType,String name,boolean status,int count,String time){
         textName.setText(name);
-        textTime.setText(""+time);
-        textCount.setText(count+"");
+        textTime.setText("" + time);
+        textCount.setText(count + "");
     }
 
     @Override
@@ -195,18 +191,18 @@ public class ShotDetailFragment extends Fragment implements Constants {
         rootLayout.setVisibility(View.INVISIBLE);
     }
 
-/*
 
-    @OnClick(R.id.btnSend) void onBtnSendClick(){
+    @OnClick(R.id.email) void onBtnSendClick(){
         if(!UtilsController.INSTANCE.isTablet()) {
             ArrayList<BaseMarker> shotList = shot.points;
             SharedPreferences sharedPreferences = ShotsController.INSTANCE.serialize(shotList);
             String listString = sharedPreferences.getString(MARKER_LIST, "");
             Bundle bundle = new Bundle();
+            bundle.putInt("type",0);
             bundle.putString(MARKER_LIST, listString);
             shotName = shot.name;
             bundle.putString(MARKER_NAME, shotName);
-            Fragment fragment = new ContactsListFragment2();
+            Fragment fragment = new ContactsSelectionFragment();
             fragment.setArguments(bundle);
             getFragmentManager().beginTransaction()
                     .add(R.id.containerContacts, fragment)
@@ -217,17 +213,18 @@ public class ShotDetailFragment extends Fragment implements Constants {
             SharedPreferences sharedPreferences = ShotsController.INSTANCE.serialize(shotList);
             String listString = sharedPreferences.getString(MARKER_LIST, "");
             Bundle bundle = new Bundle();
+            bundle.putInt("type",0);
             bundle.putString(MARKER_LIST, listString);
             shotName = tabletShotName;
             bundle.putString(MARKER_NAME, shotName);
-            Fragment fragment = new ContactsListFragment2();
+            Fragment fragment = new ContactsSelectionFragment();
             fragment.setArguments(bundle);
             getFragmentManager().beginTransaction()
                     .add(R.id.containerContacts, fragment)
                     .addToBackStack("")
                     .commit();
         }
-    }*/
+    }
 
    /* @OnClick(R.id.btnBLDevice) void onBtnChooseDeviceClick(){//TODO Прибрав це, для того, щоб не просило ввімкнути блютуз, коли вертаюсь назад до деталей шота з актівіті з лістом девайсів
         if(BluetoothController.INSTANCE.checkBluetoothAvailable() == 1) {
@@ -276,9 +273,37 @@ public class ShotDetailFragment extends Fragment implements Constants {
 
 
     @OnClick(R.id.sms) void onSmsClick(){
-        //TODO: code for sms sending - use after choosing recipient
-       /* SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage("Phone Number", null, "Message", null, null);*/
+        if(!UtilsController.INSTANCE.isTablet()) {
+            ArrayList<BaseMarker> shotList = shot.points;
+            SharedPreferences sharedPreferences = ShotsController.INSTANCE.serialize(shotList);
+            String listString = sharedPreferences.getString(MARKER_LIST, "");
+            Bundle bundle = new Bundle();
+            bundle.putInt("type",1);
+            bundle.putString(MARKER_LIST, listString);
+            shotName = shot.name;
+            bundle.putString(MARKER_NAME, shotName);
+            Fragment fragment = new ContactsSelectionFragment();
+            fragment.setArguments(bundle);
+            getFragmentManager().beginTransaction()
+                    .add(R.id.containerContacts, fragment)
+                    .addToBackStack("")
+                    .commit();
+        }else{
+            ArrayList<BaseMarker> shotList = tabletShotPoints;
+            SharedPreferences sharedPreferences = ShotsController.INSTANCE.serialize(shotList);
+            String listString = sharedPreferences.getString(MARKER_LIST, "");
+            Bundle bundle = new Bundle();
+            bundle.putInt("type",1);
+            bundle.putString(MARKER_LIST, listString);
+            shotName = tabletShotName;
+            bundle.putString(MARKER_NAME, shotName);
+            Fragment fragment = new ContactsSelectionFragment();
+            fragment.setArguments(bundle);
+            getFragmentManager().beginTransaction()
+                    .add(R.id.containerContacts, fragment)
+                    .addToBackStack("")
+                    .commit();
+        }
     }
 
 

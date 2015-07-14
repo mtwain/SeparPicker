@@ -31,4 +31,5 @@ dependencies {
     compile 'com.akexorcist:bluetoothspp:1.0.0'
     compile 'com.github.clans:fab:1.5.4'
     compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.kyleduo.switchbutton:library:1.2.8'
 }

@@ -3,6 +3,7 @@ package ua.com.besqueet.mtwain.separpicker.ui.fragments.contacts;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,9 @@ import ua.com.besqueet.mtwain.separpicker.data.Contact;
 import ua.com.besqueet.mtwain.separpicker.events.ContactsListChangedEvent;
 import ua.com.besqueet.mtwain.separpicker.mail.SendMailTask;
 
-public class ContactsListFragment2 extends Fragment implements Constants{
+public class ContactsSelectionFragment extends Fragment implements Constants{
 
-    public ContactsListFragment2(){}
+    public ContactsSelectionFragment(){}
 
     @InjectView(R.id.contactList)
     ListView contactList;
@@ -57,6 +58,8 @@ public class ContactsListFragment2 extends Fragment implements Constants{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //if(!UtilsController.INSTANCE.isTablet()) {
+                int type = getArguments().getInt("type");
+                if(type==0) {
                     long id = contacts.get(i).id;
                     String list = getArguments().getString(MARKER_LIST);
                     String senderEmail = UtilsController.INSTANCE.loadData(EMAIL);//"solomon26061994@gmail.com"
@@ -67,6 +70,11 @@ public class ContactsListFragment2 extends Fragment implements Constants{
                     List<String> recipientEmailList = new ArrayList<String>();
                     recipientEmailList = Arrays.asList(recipientEmail.split("\\s*,\\s*"));
                     new SendMailTask(ContextController.INSTANCE.getMainActivity()).execute(senderEmail, senderPassword, recipientEmailList, emailSubject, emailBody);
+                }else if(type==1){
+                    String list = getArguments().getString(MARKER_LIST);
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(contacts.get(i).number, null, list, null, null);
+                }
                 /*}else{
                     busInstance.getBus().post(new ContactItemClickEvent(contacts.get(i)));
                 }*/

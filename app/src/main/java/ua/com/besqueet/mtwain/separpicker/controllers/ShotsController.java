@@ -97,7 +97,7 @@ public enum  ShotsController {
         this.list = sharedPreferences.getString(Constants.MARKER_LIST, "");
     }
 
-    public void addShot(String name, CameraPosition cameraPosition){
+    public void saveShotFromMap(String name){
         /*String jsonList = list.getString("MARKER_LIST", "");
         Log.d("aaa","ADD="+jsonList);
         if(!jsonList.equals("")){
@@ -123,7 +123,7 @@ public enum  ShotsController {
         shot.type = ShotType.OUT;
         shot.points = temporaryList;
         shot.name = name;
-        Log.d("aaa","CAMERAPOS="+cameraPosition);
+        shot.isRead = true;
 
         try {
             ArrayList<Shot> loadedShots = getShots();
@@ -149,7 +149,7 @@ public enum  ShotsController {
         shot.name = name;
 
         try {
-            Log.d(L,"addShot"+shot.points.size());
+            Log.d(L,"saveShotFromMap"+shot.points.size());
             ArrayList<Shot> loadedShots = getShots();
             loadedShots.add(shot);
             db.put(Contract.KEY_SHOTS, loadedShots);

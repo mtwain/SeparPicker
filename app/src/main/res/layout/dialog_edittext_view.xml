@@ -12,7 +12,6 @@
         android:id="@+id/editName"
         android:layout_gravity="center_horizontal"
         android:background="@null"
-        android:hint="Назва"
         android:gravity="center_vertical"
         android:padding="8dp" />
 </LinearLayout>

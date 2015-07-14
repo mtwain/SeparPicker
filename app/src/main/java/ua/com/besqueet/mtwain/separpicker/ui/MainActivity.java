@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import de.halfbit.tinybus.Subscribe;
 import de.halfbit.tinybus.TinyBus;
@@ -17,6 +18,7 @@ import ua.com.besqueet.mtwain.separpicker.controllers.ContactsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ContextController;
 import ua.com.besqueet.mtwain.separpicker.controllers.ShotsController;
 import ua.com.besqueet.mtwain.separpicker.controllers.UtilsController;
+import ua.com.besqueet.mtwain.separpicker.events.SendingEmailStatusEvent;
 import ua.com.besqueet.mtwain.separpicker.ui.fragments.MapFragment;
 
 
@@ -79,6 +81,18 @@ public class MainActivity extends Activity {
             //Toast.makeText(this,"Connected to network",Toast.LENGTH_SHORT).show();
         }else {
             //Toast.makeText(this,"Disconnected",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Subscribe
+    public void onSendingStatusEvent(SendingEmailStatusEvent event) {
+        if(event.isSuccessful){
+            Toast.makeText(getApplicationContext(), "Дані надіслано",
+                    Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getApplicationContext(), "Помилка. Передача скасована.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

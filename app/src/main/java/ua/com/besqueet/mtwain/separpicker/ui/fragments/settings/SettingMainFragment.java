@@ -54,8 +54,6 @@ public class SettingMainFragment extends Fragment implements Constants{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edittext_view, null);
-        TextView textView = (TextView) view.findViewById(R.id.textTitle);
-        textView.setText("Позивний");
         final EditText editText = (EditText) view.findViewById(R.id.editName);
         editText.setText(UtilsController.INSTANCE.loadData(CALL));
         editText.setSelection(editText.getText().length(),editText.getText().length());
@@ -79,8 +77,6 @@ public class SettingMainFragment extends Fragment implements Constants{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edittext_view, null);
-        TextView textView = (TextView) view.findViewById(R.id.textTitle);
-        textView.setText("Email адреса");
         final EditText editText = (EditText) view.findViewById(R.id.editName);
         editText.setText(UtilsController.INSTANCE.loadData(EMAIL));
         editText.setSelection(editText.getText().length(),editText.getText().length());
@@ -112,8 +108,6 @@ public class SettingMainFragment extends Fragment implements Constants{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_edittext_password_view, null);
-        TextView textView = (TextView) view.findViewById(R.id.textTitle);
-        textView.setText("Пароль");
         final EditText editText = (EditText) view.findViewById(R.id.editName);
         editText.setText(UtilsController.INSTANCE.loadData(PASSWORD));
         editText.setSelection(editText.getText().length(),editText.getText().length());

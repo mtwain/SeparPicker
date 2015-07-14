@@ -7,6 +7,9 @@ import android.util.Log;
 
 import java.util.List;
 
+import ua.com.besqueet.mtwain.separpicker.controllers.BusController;
+import ua.com.besqueet.mtwain.separpicker.events.SendingEmailStatusEvent;
+
 /**
  * Created by maxym_tarasyuk on 5/28/15.
  */
@@ -72,10 +75,11 @@ public class SendMailTask extends AsyncTask {
 
             Log.i("SendMailTask", "Mail Sent.");
 
+            BusController.INSTANCE.getBus().post(new SendingEmailStatusEvent(true));
         } catch (Exception e) {
 
             publishProgress(e.getMessage());
-
+            BusController.INSTANCE.getBus().post(new SendingEmailStatusEvent(false));
             Log.e("SendMailTask", e.getMessage(), e);
 
         }
@@ -90,7 +94,7 @@ public class SendMailTask extends AsyncTask {
 
     public void onProgressUpdate(Object... values) {
 
-        statusDialog.setMessage(values[0].toString());
+        //statusDialog.setMessage(values[0].toString());
 
     }
 
